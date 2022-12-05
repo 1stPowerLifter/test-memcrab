@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { setHighlight } from '../../../redux/highlight/actions.ts/actions';
 import { addLine, deleteLastLine } from '../../../redux/matrix/actions.ts/actions';
-import { selectMaxNumOfBoxes } from '../../../redux/size/selectors';
+import { selectMaxNumOfBoxes } from '../../../redux/matrix/selectors';
 import { Button } from '../../UI/Button/Button';
 import { Input } from '../../UI/Input/Input';
 

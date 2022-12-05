@@ -14,10 +14,11 @@ export const getArrIdxHighlight = ({ highlight, idx, length }: IgetArrHighlight)
     const arrHighlight:number[] = []
     const { after, befor } = getAfterAndBefore({ highlight, idx, length })
 
+console.log({ after, befor })
 
-    for (let i = befor; i <= after+1; i += 1) {
+    for (let i = befor; i <= after; i += 1) {
         arrHighlight.push(i)
     }
-
+    console.log({ after, befor, arrHighlight, highlight})
     return arrHighlight
 }

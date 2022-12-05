@@ -22,17 +22,18 @@ export const getAfterAndBefore = ({ highlight, idx, length }: IgetAfterAndBefore
         afterNumber = (+highlight -1) /2
     }
 
-    
+    // console.log(beforNumber, afterNumber)
 
-    while (idx - beforNumber <= 0) {
-        beforNumber -= 1
-        afterNumber +=1
-    }
-    
     while (idx + afterNumber >= length) {
         beforNumber += 1
         afterNumber -=1
     }
+
+    while (idx - beforNumber < 0) {
+        beforNumber -= 1
+        afterNumber +=1
+    }
+    
 
     return {
         befor: idx -beforNumber,

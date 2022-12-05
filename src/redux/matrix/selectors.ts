@@ -8,4 +8,5 @@ export const selectArrOfAverage = (state: any) => {
 
     return creareArrOfAverage(heigth, width, state.matrix)
 }
-export const selectMatrixSortedNumber = (state: any):number[] => state.matrix.flatMap((line: number[]) => line).sort((a:number ,b:number) => a - b);
+export const selectMatrixSortedNumber = (state: any): number[] => state.matrix.flatMap((line: number[]) => line).sort((a: number, b: number) => a - b);
+export const selectMaxNumOfBoxes = (state: any) => state.matrix.length*state.matrix[0].length
