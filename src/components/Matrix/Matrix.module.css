@@ -1,0 +1,8 @@
+.matrix {
+    max-width: 100vw;
+    padding: 0 15px;
+}
+
+.line, .line ul {
+    display: flex;
+}

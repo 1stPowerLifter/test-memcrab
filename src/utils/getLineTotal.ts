@@ -1,0 +1,1 @@
+export const getLineTotal = (arr:number[]):number => arr.reduce((acc,number)=> acc+number)

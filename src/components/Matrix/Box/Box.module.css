@@ -1,0 +1,40 @@
+.box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: white;
+    font-size: 10px;
+}
+
+.box:hover {
+    background-color: rgb(237, 212, 98) ;
+}
+
+.box:focus{
+    background-color: rgb(43, 255, 0);
+}
+
+.box.box_total {
+    background-color: red;
+    color: white;
+}
+
+.box.box_average {
+    background-color: rgb(11, 167, 29);
+    color: rgb(0, 77, 10);
+}
+
+.box.box_highlight {
+    background-color: rgb(52, 140, 235);
+}
+
+.box.box_highlight:hover {
+    background-color: rgb(237, 212, 98);
+}
