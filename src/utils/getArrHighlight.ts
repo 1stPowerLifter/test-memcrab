@@ -1,24 +1,38 @@
-import { getAfterAndBefore } from "./getAfterAndBefore"
-
-interface IgetArrHighlight {
+interface IgetArrHighlight{
     highlight: number,
-    idx: number
-    length: number
+    number: number
+    arr: number[]
 }
 
+export const getArrHighlight = ({ highlight, number, arr }: IgetArrHighlight): number[] => {
+    
+    const arrIdxHighlight: number[] = []
 
-export const getArrIdxHighlight = ({ highlight, idx, length }: IgetArrHighlight): number[] => {
+    if(highlight === 0 || arr.length === 0 ) return arrIdxHighlight
+        
+    const idx = arr.indexOf(number)
 
-    if (highlight === 0) return []
+    let afterIdx: number = idx + 1;
+    let beforIdx: number = idx - 1
 
-    const arrHighlight:number[] = []
-    const { after, befor } = getAfterAndBefore({ highlight, idx, length })
+    while (arrIdxHighlight.length !== highlight) {
+        
+        const afterNum = arr[afterIdx]
+        const beforNum = arr[beforIdx]
 
-console.log({ after, befor })
+        if (!afterNum) {
+            arrIdxHighlight.push(beforNum)
+            beforIdx -= 1
+        } else if (!beforNum){
+            arrIdxHighlight.push(afterNum)
+            afterIdx +=1
+        } else {
 
-    for (let i = befor; i <= after; i += 1) {
-        arrHighlight.push(i)
+            number - beforNum < afterNum - number ? arrIdxHighlight.push(beforNum) : arrIdxHighlight.push(afterNum)
+
+            number - beforNum < afterNum - number ? beforIdx -= 1 : afterIdx +=1
+        }
     }
-    console.log({ after, befor, arrHighlight, highlight})
-    return arrHighlight
+
+    return arrIdxHighlight
 }

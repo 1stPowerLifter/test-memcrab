@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setArrOfIndex } from '../../../redux/highlight/actions.ts/actions';
+import { setArrHighlight } from '../../../redux/highlight/actions.ts/actions';
 import { selectArrHighlight, selectHighlight } from '../../../redux/highlight/selectors';
 import { changeMatrixNumber } from '../../../redux/matrix/actions.ts/actions';
 import { selectMatrixSortedNumber } from '../../../redux/matrix/selectors';
-import {getArrIdxHighlight} from '../../../utils/getArrHighlight'
+import { getArrHighlight } from '../../../utils/getArrHighlight';
 import style from "./Box.module.css"
 
 interface IBox{
@@ -15,33 +15,37 @@ interface IBox{
 }
 
 export const Box: FC<IBox> = ({ idx, idxArr, number }) => {
-
+    const [isHighlight, setIsHighlight] = useState(false)
     const dispatch = useDispatch()
+
     const highlight = useSelector(selectHighlight)
-    const matrixSortedNumber = useSelector(selectMatrixSortedNumber)
+    const arrMatrix = useSelector(selectMatrixSortedNumber)
     const arrHighlight = useSelector(selectArrHighlight)
 
-        const absolutIdx = matrixSortedNumber.indexOf(number)
-
-    let styleBox = arrHighlight.includes(absolutIdx) ? [style.box, style.box_highlight] : [style.box]
+    useEffect(() => {
+        arrHighlight.includes(number) 
+            ? setIsHighlight(true)
+            : setIsHighlight(false)
+    }, [arrHighlight, number])
+    
 
     const handleOnClick = () => {
         dispatch(changeMatrixNumber({ idx, idxArr, step: 1 }))
     }
 
-    const enter = (highlight:any) => {
-        const hoverIdx: number = matrixSortedNumber.indexOf(number)
-        const length = matrixSortedNumber.length
-        const arrOfIdx = getArrIdxHighlight({ idx: hoverIdx, highlight, length })
-
-        dispatch(setArrOfIndex(arrOfIdx))
+    const enter = () => {
+        const arr = getArrHighlight({ number, highlight, arr: arrMatrix })
+        dispatch(setArrHighlight(arr))
     }
-    const leave = () => dispatch(setArrOfIndex([]))
+
+    const leave = () => {
+        dispatch(setArrHighlight([]))
+    }
 
     return (
-        <button className={styleBox.join(" ")}
+        <button className={isHighlight ? [style.box, style.box_highlight].join(" ") :style.box}
             onClick={handleOnClick}
-            onMouseEnter={() => enter(highlight)}
+            onMouseEnter={enter}
             onMouseLeave={leave}
         >
             {number}

@@ -3,8 +3,8 @@ import style from "./Box.module.css"
 
 interface IBoxTotal{
     number: number,
-    enter: any,
-    leave:any
+    enter: () => void,
+    leave: () => void
 }
 
 export const BoxTotal: FC<IBoxTotal> = ({ number, enter, leave }) => {

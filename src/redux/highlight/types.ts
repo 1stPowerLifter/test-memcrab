@@ -1,4 +1,4 @@
-export interface highlight {
+export interface IHighlight {
     highlight: number,
-    arrOfIndex: number[]
+    arrHighlight: number[]
 }

@@ -2,14 +2,17 @@ import { FC, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setMatrix } from '../../../redux/matrix/actions.ts/actions';
 import { addSize } from '../../../redux/size/actions.ts/actions';
-import { ISizeState } from '../../../redux/size/types';
 import { createMatrix } from '../../../utils/createMatrix';
 import { Button } from '../../UI/Button/Button';
 import { Input } from '../../UI/Input/Input';
 
+interface IStateSize {
+    heigth: string|number,
+    width: string|number
+}
 
 export const MainControler: FC = () => {
-    const [{ heigth, width }, setSize] = useState<ISizeState>({ heigth: "", width: "" })
+    const [{ heigth, width }, setSize] = useState<IStateSize>({ heigth: "", width: "" })
     const dispatch = useDispatch()
     
     const message = "Введіть число від 1 до 100"
@@ -18,10 +21,10 @@ export const MainControler: FC = () => {
     useEffect(() => {
 
         if (heigth !== "" || width !== "") {
-            if (+heigth < 0) setSize(state => ({ ...state, heigth: "0" }))
-            if (+heigth > 100) setSize(state => ({ ...state, heigth: "100" }))
-            if (+width < 0) setSize(state => ({ ...state, width: "0" }))
-            if (+width > 100) setSize(state => ({ ...state, width: "100" }))
+            if (+heigth < 0) setSize(state => ({ ...state, heigth: 0 }))
+            if (+heigth > 100) setSize(state => ({ ...state, heigth: 100 }))
+            if (+width < 0) setSize(state => ({ ...state, width: 0 }))
+            if (+width > 100) setSize(state => ({ ...state, width: 100 }))
         }
 
     }, [heigth, width])
@@ -32,8 +35,10 @@ export const MainControler: FC = () => {
     }
 
     const handleSubmit = (): void => {
-        dispatch(addSize({ heigth, width }))
-        dispatch(setMatrix(createMatrix({ heigth, width })))
+        if (typeof width !== "string" && typeof heigth !== "string") {
+            dispatch(addSize({ heigth, width }))
+            dispatch(setMatrix(createMatrix({ heigth, width })))
+        }
     }
 
     return (

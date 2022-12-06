@@ -9,11 +9,11 @@ import { BoxAverage } from '../Box';
 
 
 export const LineAverage: FC= () => {
-    const arrOfAverage =useSelector(selectArrOfAverage)
+    const arrOfAverage = useSelector(selectArrOfAverage)
 
     return (
         <ul>
-            {arrOfAverage.map((number: number) => (
+            {arrOfAverage.map((number) => (
                         <li key={nanoid()}>
                             <BoxAverage number={number}/>
                         </li>

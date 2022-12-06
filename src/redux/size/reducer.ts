@@ -8,7 +8,7 @@ import { ISizeState } from './types';
 
 
 
-const SizeInitialState:ISizeState = { heigth : "", width: "" }
+const SizeInitialState:ISizeState = { heigth : 0, width: 0 }
 
 export const sizeReduser = (state = SizeInitialState, action: AnyAction) => {
   switch (action.type) {

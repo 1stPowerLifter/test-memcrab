@@ -5,7 +5,7 @@ export const setHighlight = (number:number) => ({
    payload: number,
 })
 
-export const setArrOfIndex = (arr:number[]) => ({
+export const setArrHighlight= (arr:number[]) => ({
    type: SET_ARR_OF_INDEX,
    payload: arr,
 })

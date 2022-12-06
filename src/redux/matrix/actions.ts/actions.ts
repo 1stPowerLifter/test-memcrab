@@ -1,7 +1,7 @@
-import { IChangeMatrixNumber, Matrix } from '../types';
+import { IChangeMatrixNumber, IMatrix } from '../types';
 import { CHANGE_MATRIX_NUMBER, CREATE_MATRIX, DELETE_LAST_ARR, ADD_LINE} from './actionsTypes';
 
-export const setMatrix = (matrix:Matrix) => ({
+export const setMatrix = (matrix:IMatrix) => ({
    type: CREATE_MATRIX,
    payload: matrix,
 })

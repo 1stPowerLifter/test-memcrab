@@ -1,4 +1,4 @@
-export type Matrix = number[][]
+export type IMatrix = number[][]
 
 export interface IChangeMatrixNumber {
     idxArr: number,

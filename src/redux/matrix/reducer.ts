@@ -1,10 +1,10 @@
 import { AnyAction } from 'redux'
 import { createLine } from '../../utils/createLine';
 import { ADD_LINE, CHANGE_MATRIX_NUMBER, CREATE_MATRIX, DELETE_LAST_ARR } from './actions.ts/actionsTypes';
-import { Matrix } from './types';
+import { IMatrix } from './types';
 
 
-const MatrixInitialState: Matrix = []
+const MatrixInitialState: IMatrix = []
 
 
 const matrixReducer = (state = MatrixInitialState, action: AnyAction) => {

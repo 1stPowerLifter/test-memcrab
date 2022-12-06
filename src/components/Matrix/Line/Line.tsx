@@ -16,7 +16,7 @@ export const Line: FC<ILine> = ({ idxArr }) => {
     const line = useSelector(selectMatrix)[idxArr]
 
     const lineTotal = getLineTotal(line)
-    const lineProcent = line.map( (number:number) => (number/lineTotal*100).toFixed(1))
+    const lineProcent= line.map( (number) => +(number/lineTotal*100).toFixed(1))
 
     const handelHoverTotalOn = () => setHoveredTotal(true)
     const handelHoverTotalOff = () => setHoveredTotal(false)
@@ -25,14 +25,14 @@ export const Line: FC<ILine> = ({ idxArr }) => {
         <>
             {hoveredTotal
                 ? (<ul>
-                    {lineProcent.map((number: number) => (
+                    {lineProcent.map((number) => (
                         <li key={nanoid()}>
                             <BoxProcent number={number}/>
                         </li>
                     ))}
                 </ul>)
                 : (<ul>
-                    {line.map((number: number, idx: number) => (
+                    {line.map((number, idx) => (
                         <li key={nanoid()}>
                             <Box number={number} idx={idx} idxArr={idxArr} />
                         </li>
