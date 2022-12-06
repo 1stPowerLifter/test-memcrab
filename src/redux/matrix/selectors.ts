@@ -1,17 +1,18 @@
 import { createSelector } from "reselect";
 import { creareArrOfAverage } from "../../utils/creareArrOfAverage";
 import { Store } from "../type";
+import { ILine, IMatrix, INumber } from "./types";
 
-export const selectMatrix = (state: Store):number[][] => state.matrix;
+export const selectMatrix = (state: Store):IMatrix => state.matrix;
 export const selectVisibilityMatrix = (state: Store):boolean => state.matrix.length > 0;
 
 export const selectArrOfAverage = createSelector(selectMatrix, (matrix):number[] => {
-    const width = matrix[0]?.length
+    const width = matrix[0]?.line.length
     const heigth = matrix.length
 
     return creareArrOfAverage(heigth, width, matrix)
 })
 
-export const selectMatrixSortedNumber = createSelector(selectMatrix, (matrix):number[] => matrix.flatMap((line: number[]) => line).sort((a: number, b: number) => a - b));
+export const selectMatrixSortedNumber = createSelector(selectMatrix, (matrix):INumber[] => matrix.flatMap((line:ILine) => line.line).sort((a:INumber, b:INumber) => a.number - b.number));
 
-export const selectMaxNumOfBoxes = createSelector(selectMatrix, (matrix):number => matrix.length * matrix[0].length)
+export const selectMaxNumOfBoxes = createSelector(selectMatrix, (matrix):number => matrix.length * matrix[0].line.length)

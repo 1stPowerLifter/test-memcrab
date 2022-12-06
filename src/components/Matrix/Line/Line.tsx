@@ -13,10 +13,11 @@ interface ILine {
 
 export const Line: FC<ILine> = ({ idxArr }) => {
     const [hoveredTotal, setHoveredTotal] = useState(false)
-    const line = useSelector(selectMatrix)[idxArr]
+    const lineObj = useSelector(selectMatrix)[idxArr]
+    const line = lineObj.line
 
     const lineTotal = getLineTotal(line)
-    const lineProcent= line.map( (number) => +(number/lineTotal*100).toFixed(1))
+    const lineProcent= line.map((number) => +(number.number/lineTotal*100).toFixed(1))
 
     const handelHoverTotalOn = () => setHoveredTotal(true)
     const handelHoverTotalOff = () => setHoveredTotal(false)
@@ -33,7 +34,7 @@ export const Line: FC<ILine> = ({ idxArr }) => {
                 </ul>)
                 : (<ul>
                     {line.map((number, idx) => (
-                        <li key={nanoid()}>
+                        <li key={number.id}>
                             <Box number={number} idx={idx} idxArr={idxArr} />
                         </li>
                     ))}

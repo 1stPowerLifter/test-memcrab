@@ -1,7 +1,9 @@
+import { IMatrix } from "../redux/matrix/types"
 import { ISizeState } from "../redux/size/types"
 import { createLine } from "./createLine"
 
-export const createMatrix = ({ width, heigth }:ISizeState):number[][]=> {
+
+export const createMatrix = ({ width, heigth }:ISizeState):IMatrix => {
     let counterHeight = 0
     const matrix = []
 

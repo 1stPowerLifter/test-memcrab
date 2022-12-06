@@ -1,16 +1,19 @@
+import { INumber } from "../redux/matrix/types"
+
 interface IgetArrHighlight{
     highlight: number,
-    number: number
-    arr: number[]
+    id : string
+    arr: INumber[]
 }
 
-export const getArrHighlight = ({ highlight, number, arr }: IgetArrHighlight): number[] => {
+export const getArrHighlight = ({ highlight, id , arr }: IgetArrHighlight): string[] => {
     
-    const arrIdxHighlight: number[] = []
+    const arrIdxHighlight: string[] = []
 
     if(highlight === 0 || arr.length === 0 ) return arrIdxHighlight
         
-    const idx = arr.indexOf(number)
+    const idx = arr.findIndex(number => number.id === id)
+    const number = arr[idx].number
 
     let afterIdx: number = idx + 1;
     let beforIdx: number = idx - 1
@@ -21,16 +24,16 @@ export const getArrHighlight = ({ highlight, number, arr }: IgetArrHighlight): n
         const beforNum = arr[beforIdx]
 
         if (!afterNum) {
-            arrIdxHighlight.push(beforNum)
+            arrIdxHighlight.push(beforNum.id)
             beforIdx -= 1
         } else if (!beforNum){
-            arrIdxHighlight.push(afterNum)
+            arrIdxHighlight.push(afterNum.id)
             afterIdx +=1
         } else {
 
-            number - beforNum < afterNum - number ? arrIdxHighlight.push(beforNum) : arrIdxHighlight.push(afterNum)
+            number - beforNum.number < afterNum.number - number ? arrIdxHighlight.push(beforNum.id) : arrIdxHighlight.push(afterNum.id)
 
-            number - beforNum < afterNum - number ? beforIdx -= 1 : afterIdx +=1
+            number - beforNum.number < afterNum.number - number ? beforIdx -= 1 : afterIdx +=1
         }
     }
 

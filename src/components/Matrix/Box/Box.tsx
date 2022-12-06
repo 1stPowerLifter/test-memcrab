@@ -5,16 +5,17 @@ import { setArrHighlight } from '../../../redux/highlight/actions.ts/actions';
 import { selectArrHighlight, selectHighlight } from '../../../redux/highlight/selectors';
 import { changeMatrixNumber } from '../../../redux/matrix/actions.ts/actions';
 import { selectMatrixSortedNumber } from '../../../redux/matrix/selectors';
+import { INumber } from '../../../redux/matrix/types';
 import { getArrHighlight } from '../../../utils/getArrHighlight';
 import style from "./Box.module.css"
 
 interface IBox{
     idx: number
-    number: number
+    number: INumber
     idxArr: number
 }
 
-export const Box: FC<IBox> = ({ idx, idxArr, number }) => {
+export const Box: FC<IBox> = ({ idx, idxArr, number:{id, number} }) => {
     const [isHighlight, setIsHighlight] = useState(false)
     const dispatch = useDispatch()
 
@@ -23,18 +24,18 @@ export const Box: FC<IBox> = ({ idx, idxArr, number }) => {
     const arrHighlight = useSelector(selectArrHighlight)
 
     useEffect(() => {
-        arrHighlight.includes(number) 
+        arrHighlight.includes(id) 
             ? setIsHighlight(true)
             : setIsHighlight(false)
-    }, [arrHighlight, number])
+    }, [arrHighlight, id])
     
 
     const handleOnClick = () => {
-        dispatch(changeMatrixNumber({ idx, idxArr, step: 1 }))
+        dispatch(changeMatrixNumber({ idx , idxArr, step: 1 }))
     }
 
     const enter = () => {
-        const arr = getArrHighlight({ number, highlight, arr: arrMatrix })
+        const arr = getArrHighlight({ id, highlight, arr: arrMatrix })
         dispatch(setArrHighlight(arr))
     }
 

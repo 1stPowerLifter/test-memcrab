@@ -13,14 +13,14 @@ const matrixReducer = (state = MatrixInitialState, action: AnyAction) => {
       return action.payload;
     case CHANGE_MATRIX_NUMBER:
       const { idxArr, idx, step } = action.payload;
-      state[idxArr][idx] += step;
+      state[idxArr].line[idx].number += step;
       return [...state];
     case DELETE_LAST_ARR:
       const inxForDel = state.length - 1
       state.splice(inxForDel, 1)
       return [...state]
     case ADD_LINE:
-      const matrixWidth = state[0].length
+      const matrixWidth = state[0].line.length
       const line = createLine(matrixWidth)
       return [...state, line];
     default:

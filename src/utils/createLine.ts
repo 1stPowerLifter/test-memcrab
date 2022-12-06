@@ -1,11 +1,17 @@
 import { getRandomNumber } from "./getRandomNumber"
+import {nanoid} from 'nanoid'
+import { ILine } from "../redux/matrix/types"
 
-export const createLine = (width:number): number[] => {
+export const createLine = (width:number): ILine => {
     let counterWidth = 0
-    const line = []
+    const line:ILine = {
+        line: [],
+        id:""
+    }
 
     while (counterWidth < width) {
-        line.push(getRandomNumber())
+        line.line.push(getRandomNumber())
+        line.id = nanoid()
         counterWidth += 1
     }
     
