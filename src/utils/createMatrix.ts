@@ -1,4 +1,4 @@
-import { IMatrix } from "../redux/matrix/types"
+import { IMatrix } from "../redux/matrix/type"
 import { ISizeState } from "../redux/size/types"
 import { createLine } from "./createLine"
 

@@ -1,5 +1,5 @@
 import { IHighlight } from "./highlight/types";
-import { IMatrix } from "./matrix/types";
+import { IMatrix } from "./matrix/type";
 import { ISizeState } from "./size/types";
 
 export interface Store {

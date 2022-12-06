@@ -1,4 +1,4 @@
-import { INumber } from "../redux/matrix/types";
+import { INumber } from "../redux/matrix/type";
 import {nanoid} from 'nanoid'
 
 export const getRandomNumber = (): INumber => {

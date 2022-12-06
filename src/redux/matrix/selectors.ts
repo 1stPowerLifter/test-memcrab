@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
 import { creareArrOfAverage } from "../../utils/creareArrOfAverage";
 import { Store } from "../type";
-import { ILine, IMatrix, INumber } from "./types";
+import { ILine, IMatrix, INumber } from "./type";
 
 export const selectMatrix = (state: Store):IMatrix => state.matrix;
 export const selectVisibilityMatrix = (state: Store):boolean => state.matrix.length > 0;

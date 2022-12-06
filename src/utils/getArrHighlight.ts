@@ -1,4 +1,4 @@
-import { INumber } from "../redux/matrix/types"
+import { INumber } from "../redux/matrix/type"
 
 interface IgetArrHighlight{
     highlight: number,

@@ -1,4 +1,4 @@
-import { IChangeMatrixNumber, IMatrix } from '../types';
+import { IChangeMatrixNumber, IMatrix } from '../type';
 import { CHANGE_MATRIX_NUMBER, CREATE_MATRIX, DELETE_LAST_ARR, ADD_LINE} from './actionsTypes';
 
 export const setMatrix = (matrix:IMatrix) => ({

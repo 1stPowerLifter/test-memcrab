@@ -5,7 +5,7 @@ import { setArrHighlight } from '../../../redux/highlight/actions.ts/actions';
 import { selectArrHighlight, selectHighlight } from '../../../redux/highlight/selectors';
 import { changeMatrixNumber } from '../../../redux/matrix/actions.ts/actions';
 import { selectMatrixSortedNumber } from '../../../redux/matrix/selectors';
-import { INumber } from '../../../redux/matrix/types';
+import { INumber } from '../../../redux/matrix/type';
 import { getArrHighlight } from '../../../utils/getArrHighlight';
 import style from "./Box.module.css"
 

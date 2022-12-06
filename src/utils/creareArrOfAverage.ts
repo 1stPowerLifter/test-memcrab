@@ -1,4 +1,4 @@
-import { IMatrix } from "../redux/matrix/types"
+import { IMatrix } from "../redux/matrix/type"
 
 export const creareArrOfAverage = (heigth:number, width:number, matrix:IMatrix ):number[] => {
     const arrOfAverage:number[] = []

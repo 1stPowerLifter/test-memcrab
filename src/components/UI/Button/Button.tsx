@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 interface IButton {
     name: string,
-    onClick: any,
+    onClick: () => void,
     type?: "button" | "submit"
     disabled?: boolean
 }

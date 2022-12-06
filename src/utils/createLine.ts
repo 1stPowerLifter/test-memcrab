@@ -1,6 +1,6 @@
 import { getRandomNumber } from "./getRandomNumber"
 import {nanoid} from 'nanoid'
-import { ILine } from "../redux/matrix/types"
+import { ILine } from "../redux/matrix/type"
 
 export const createLine = (width:number): ILine => {
     let counterWidth = 0
